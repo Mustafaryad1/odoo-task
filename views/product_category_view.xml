@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <!--  form view-->
+        <record id="new_product_category_form_view_id" model="ir.ui.view">
+            <field name="name">new_product_category_form_view_id</field>
+            <field name="model">product.category</field>
+            <field name="arch" type="xml">
+                <form string="Product category Form View">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" string="Product Name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <!--        action window-->
+        <record id="new_product_category_action_view_id" model="ir.actions.act_window">
+            <field name="name">Product Category</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.category</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!--        override action to open custom form view -->
+        <record id="new_form_product_category_action_view_id" model="ir.actions.act_window.view">
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="new_product_category_form_view_id"/>
+            <field name="act_window_id" ref="new_product_category_action_view_id"/>
+        </record>
+
+
+
+
+        <!--        sub menu-->
+        <menuitem id="new_product_category_menu_view_id" name="Product Category" parent="parent_product_menu_view_id" action="new_product_category_action_view_id" />
+
+
+    </data>
+</odoo>
